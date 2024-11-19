@@ -1,0 +1,3245 @@
+{
+      "openapi": "3.0.0",
+      "info": {
+        "version": "1.0",
+        "title": "Powertranz REST API",
+        "license": {
+            "name": "MIT"
+          }
+      },
+      "servers": [
+        {
+            "url": "https://api.mockapi.com"
+        }
+      ],
+      "paths": {
+        "/api/v1/health": {
+          "get": {
+            "operationId": "AppController_health",
+            "parameters": [],
+            "responses": {
+              "200": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/api/v1/user/profile": {
+          "get": {
+            "operationId": "UserController_profile",
+            "parameters": [],
+            "responses": {
+              "200": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ProfileResponse"
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "Profile response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ProfileResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "UserController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/user/update-device-token": {
+          "post": {
+            "operationId": "UserController_updateDeviceToken",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DeviceTokenInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Update device token response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "UserController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/user/delete": {
+          "delete": {
+            "operationId": "UserController_deleteAccount",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DeleteAccountInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": ""
+              },
+              "201": {
+                "description": "Delete account",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "UserController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/user/register": {
+          "post": {
+            "operationId": "UserController_register",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RegisterUserInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Register response V2",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/SubTokenResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "UserController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/affiliate/stats": {
+          "get": {
+            "operationId": "AffiliateController_stats",
+            "parameters": [],
+            "responses": {
+              "200": {
+                "description": ""
+              }
+            },
+            "tags": [
+              "AffiliateController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/affiliate/transactions/{pageNumber}/{perPage}": {
+          "get": {
+            "operationId": "AffiliateController_affiliateTransactions",
+            "parameters": [
+              {
+                "name": "pageNumber",
+                "required": true,
+                "in": "path",
+                "schema": {
+                  "type": "number"
+                }
+              },
+              {
+                "name": "perPage",
+                "required": true,
+                "in": "path",
+                "schema": {
+                  "type": "number"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": ""
+              }
+            },
+            "tags": [
+              "AffiliateController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/verification/verification-request": {
+          "post": {
+            "operationId": "VerificationController_verificationRequest",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/VerificationRequestInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Verification request response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "VerificationController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/verification/verify-account": {
+          "post": {
+            "operationId": "VerificationController_verifyAccount",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/VerifyCodeInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Verify account response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TokenResponse"
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TokenResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "VerificationController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/activity/list/{pageNumber}/{perPage}": {
+          "get": {
+            "operationId": "ActivityController_list",
+            "parameters": [
+              {
+                "name": "pageNumber",
+                "required": true,
+                "in": "path",
+                "schema": {
+                  "type": "number"
+                }
+              },
+              {
+                "name": "perPage",
+                "required": true,
+                "in": "path",
+                "schema": {
+                  "type": "number"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": ""
+              }
+            },
+            "tags": [
+              "ActivityController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/auth/login": {
+          "post": {
+            "operationId": "AuthController_login",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/LoginInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Login response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TokenResponse"
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TokenResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "AuthController"
+            ]
+          }
+        },
+        "/api/v1/auth/logout": {
+          "post": {
+            "operationId": "AuthController_logout",
+            "parameters": [],
+            "responses": {
+              "200": {
+                "description": "Logout Response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "AuthController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/auth/login-two-fa": {
+          "post": {
+            "operationId": "AuthController_loginTwoFa",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CheckTwoFaCodeInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Login Two FA response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TokenResponse"
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TokenResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "AuthController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/auth/login-by-refresh-token": {
+          "post": {
+            "operationId": "AuthController_loginByRefreshToken",
+            "parameters": [],
+            "responses": {
+              "200": {
+                "description": "Login by refresh token ",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TokenResponse"
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TokenResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "AuthController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/auth/admin/login": {
+          "post": {
+            "operationId": "AuthController_loginAdmin",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/LoginInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Login response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TokenResponse"
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TokenResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "AuthController"
+            ]
+          }
+        },
+        "/api/v1/password/change": {
+          "post": {
+            "operationId": "PasswordController_changePassword",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ChangePasswordInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Change password response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "PasswordController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/password/reset-by-auth": {
+          "post": {
+            "operationId": "PasswordController_resetPasswordByAuth",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ResetPasswordAuthInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": ""
+              }
+            },
+            "tags": [
+              "PasswordController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/password/reset-request": {
+          "post": {
+            "operationId": "PasswordController_resetPasswordRequest",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ResetPasswordRequestInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Reset password request response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "PasswordController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/password/reset": {
+          "post": {
+            "operationId": "PasswordController_resetPassword",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ResetPasswordInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Reset password response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "PasswordController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/two-fa/status": {
+          "get": {
+            "operationId": "TwoFaController_status",
+            "parameters": [],
+            "responses": {
+              "200": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TwoFaStatusResponse"
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "Two FA status response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TwoFaStatusResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "TwoFaController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/two-fa/generate": {
+          "post": {
+            "operationId": "TwoFaController_generate",
+            "parameters": [],
+            "responses": {
+              "201": {
+                "description": "Generate Two FA response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GenerateTwoFaResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "TwoFaController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/two-fa/enable": {
+          "post": {
+            "operationId": "TwoFaController_enable",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CheckTwoFaCodeInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Enable Two FA response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "TwoFaController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/two-fa/disable": {
+          "post": {
+            "operationId": "TwoFaController_disable",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CheckTwoFaCodeInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Disable Two FA response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "TwoFaController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/coupon-code/add": {
+          "post": {
+            "operationId": "CouponCodeController_add",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CouponCodeInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Add discount coupon code response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "CouponCodeController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/coupon-code/check": {
+          "post": {
+            "operationId": "CouponCodeController_checkCoupon",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CheckCouponCodeInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Check discount coupon code response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/CheckCouponCodeResponse"
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/CheckCouponCodeResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "CouponCodeController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/coupon-code/purge": {
+          "delete": {
+            "operationId": "CouponCodeController_purge",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/PurgeCouponCodeInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Purge discount coupon code response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "CouponCodeController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/support/contact": {
+          "post": {
+            "operationId": "SupportController_contact",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ContactInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Register response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "SupportController"
+            ]
+          }
+        },
+        "/api/v1/merchant/add": {
+          "post": {
+            "operationId": "MerchantController_add",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NewMerchantInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Add merchant",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "MerchantController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/merchant/{merchantId}/add-branch": {
+          "post": {
+            "operationId": "MerchantController_addBranch",
+            "parameters": [
+              {
+                "name": "merchantId",
+                "required": false,
+                "in": "path",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NewBranchInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Add merchant branch",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "MerchantController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/merchant/update/{merchantId}": {
+          "post": {
+            "operationId": "MerchantController_update",
+            "parameters": [
+              {
+                "name": "merchantId",
+                "required": false,
+                "in": "path",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UpdateMerchantInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Update merchant",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "MerchantController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/merchant/disable/{merchantId}": {
+          "delete": {
+            "operationId": "MerchantController_disable",
+            "parameters": [
+              {
+                "name": "merchantId",
+                "required": false,
+                "in": "path",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "Remove merchant",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "MerchantController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/merchant/{merchantId}/disable-branch/{branchId}": {
+          "delete": {
+            "operationId": "MerchantController_disableBranch",
+            "parameters": [],
+            "responses": {
+              "200": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              },
+              "201": {
+                "description": "Remove branch",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "MerchantController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/merchant/{merchantId}/update-branch/{branchId}": {
+          "post": {
+            "operationId": "MerchantController_updateBranch",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NewBranchInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Update branch",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "MerchantController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/merchant/list/{pageNumber}/{perPage}": {
+          "get": {
+            "operationId": "MerchantController_list",
+            "parameters": [
+              {
+                "name": "pageNumber",
+                "required": true,
+                "in": "path",
+                "schema": {
+                  "type": "number"
+                }
+              },
+              {
+                "name": "perPage",
+                "required": true,
+                "in": "path",
+                "schema": {
+                  "type": "number"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": ""
+              }
+            },
+            "tags": [
+              "MerchantController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/merchant/list/banks/{pageNumber}/{perPage}": {
+          "get": {
+            "operationId": "MerchantController_listBanks",
+            "parameters": [
+              {
+                "name": "pageNumber",
+                "required": true,
+                "in": "path",
+                "schema": {
+                  "type": "number"
+                }
+              },
+              {
+                "name": "perPage",
+                "required": true,
+                "in": "path",
+                "schema": {
+                  "type": "number"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": ""
+              }
+            },
+            "tags": [
+              "MerchantController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/merchant/{merchantId}/list-branches/{pageNumber}/{perPage}": {
+          "get": {
+            "operationId": "MerchantController_listBranches",
+            "parameters": [],
+            "responses": {
+              "200": {
+                "description": ""
+              }
+            },
+            "tags": [
+              "MerchantController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/merchant/details/{merchantId}": {
+          "get": {
+            "operationId": "MerchantController_getMerchant",
+            "parameters": [
+              {
+                "name": "merchantId",
+                "required": false,
+                "in": "path",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": ""
+              }
+            },
+            "tags": [
+              "MerchantController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/merchant/powertranz-details/{merchantId}": {
+          "get": {
+            "operationId": "MerchantController_getMerchantDetailsWithPowerTranzId",
+            "parameters": [
+              {
+                "name": "merchantId",
+                "required": false,
+                "in": "path",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": ""
+              }
+            },
+            "tags": [
+              "MerchantController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/merchant/statistics": {
+          "get": {
+            "operationId": "MerchantController_getStatistics",
+            "parameters": [
+              {
+                "name": "merchantId",
+                "required": false,
+                "in": "query",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": ""
+              }
+            },
+            "tags": [
+              "MerchantController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/merchant/image/{merchantId}": {
+          "post": {
+            "operationId": "MerchantController_uploadFile",
+            "parameters": [
+              {
+                "name": "merchantId",
+                "required": false,
+                "in": "path",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "multipart/form-data": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "file": {
+                        "type": "string",
+                        "format": "binary"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": ""
+              }
+            },
+            "tags": [
+              "MerchantController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/merchant/admin/activate-merchant": {
+          "post": {
+            "operationId": "MerchantController_activateMerchantAdmin",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ActivateMerchantAdminInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Active merchant by admin",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "MerchantController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/merchant/admin/reject-merchant": {
+          "post": {
+            "operationId": "MerchantController_rejectMerchantAdmin",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RejectMerchantAdminInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Reject merchant by admin",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "MerchantController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/merchant/admin/update-merchant-pan-token": {
+          "post": {
+            "operationId": "MerchantController_updatePanTokenMerchantAdmin",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UpdateMerchantAdminInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Update merchant pan token by admin",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GeneralResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "MerchantController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/transaction/{transactionId}": {
+          "get": {
+            "operationId": "TransactionController_getTransaction",
+            "parameters": [
+              {
+                "name": "transactionId",
+                "required": true,
+                "in": "path",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "TransactionController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/transaction/details/{transactionId}": {
+          "get": {
+            "operationId": "TransactionController_getTransactionDetails",
+            "parameters": [
+              {
+                "name": "transactionId",
+                "required": true,
+                "in": "path",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "TransactionController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/transaction/activate-merchant/{merchantId}": {
+          "post": {
+            "operationId": "TransactionController_activateMerchant",
+            "parameters": [
+              {
+                "name": "merchantId",
+                "required": false,
+                "in": "path",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MerchantActivationInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "TransactionController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/transaction/cancel/{transactionId}": {
+          "delete": {
+            "operationId": "TransactionController_cancelTransaction",
+            "parameters": [
+              {
+                "name": "transactionId",
+                "required": true,
+                "in": "path",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": ""
+              }
+            },
+            "tags": [
+              "TransactionController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/transaction/refund/{transactionId}": {
+          "post": {
+            "operationId": "TransactionController_refundTransaction",
+            "parameters": [
+              {
+                "name": "transactionId",
+                "required": true,
+                "in": "path",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RefundTransactionInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": ""
+              }
+            },
+            "tags": [
+              "TransactionController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/transaction/list/{pageNumber}/{perPage}": {
+          "get": {
+            "operationId": "TransactionController_listTransactions",
+            "parameters": [
+              {
+                "name": "pageNumber",
+                "required": true,
+                "in": "path",
+                "schema": {
+                  "type": "number"
+                }
+              },
+              {
+                "name": "perPage",
+                "required": true,
+                "in": "path",
+                "schema": {
+                  "type": "number"
+                }
+              },
+              {
+                "name": "email",
+                "required": false,
+                "in": "query",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "merchantName",
+                "required": false,
+                "in": "query",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "branchName",
+                "required": false,
+                "in": "query",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "phone",
+                "required": false,
+                "in": "query",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "refund",
+                "required": false,
+                "in": "query",
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              {
+                "name": "currency",
+                "required": false,
+                "in": "query",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "statuses",
+                "required": false,
+                "in": "query",
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              {
+                "name": "duration",
+                "required": false,
+                "in": "query",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "transactionId",
+                "required": false,
+                "in": "query",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "merchantId",
+                "required": false,
+                "in": "query",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "branchId",
+                "required": false,
+                "in": "query",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "fromDate",
+                "required": false,
+                "in": "query",
+                "schema": {
+                  "format": "date-time",
+                  "type": "string"
+                }
+              },
+              {
+                "name": "toDate",
+                "required": false,
+                "in": "query",
+                "schema": {
+                  "format": "date-time",
+                  "type": "string"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": ""
+              }
+            },
+            "tags": [
+              "TransactionController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/transaction/payment/{transactionId}": {
+          "get": {
+            "operationId": "TransactionController_transactionRedirect",
+            "parameters": [
+              {
+                "name": "transactionId",
+                "required": true,
+                "in": "path",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "TransactionController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/transaction/process": {
+          "post": {
+            "operationId": "TransactionController_processTransaction",
+            "parameters": [],
+            "responses": {
+              "201": {
+                "description": ""
+              }
+            },
+            "tags": [
+              "TransactionController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/transaction/payment-request/{merchantId}": {
+          "post": {
+            "operationId": "TransactionController_paymentRequest",
+            "parameters": [
+              {
+                "name": "merchantId",
+                "required": false,
+                "in": "path",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/PaymentRequestInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "TransactionController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/transaction/notify-payment-request": {
+          "post": {
+            "operationId": "TransactionController_paymentRequestNotification",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/PaymentRequestNotificationInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            },
+            "tags": [
+              "TransactionController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/transaction/pay": {
+          "post": {
+            "operationId": "TransactionController_pay",
+            "parameters": [],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/PayInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": ""
+              }
+            },
+            "tags": [
+              "TransactionController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        },
+        "/api/v1/transaction/pay-merchant/{merchantId}": {
+          "post": {
+            "operationId": "TransactionController_payMerchant",
+            "parameters": [
+              {
+                "name": "merchantId",
+                "required": false,
+                "in": "path",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/PayMerchantInput"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": ""
+              }
+            },
+            "tags": [
+              "TransactionController"
+            ],
+            "security": [
+              {
+                "bearer": []
+              }
+            ]
+          }
+        }
+      },
+      "components": {
+        "schemas": {
+          "ProfileResponse": {
+            "properties": {
+              "name": {
+                "minLength": 2,
+                "maxLength": 25,
+                "type": "string",
+                "pattern": "^[a-zA-Z]+$"
+              },
+              "email": {
+                "format": "email",
+                "type": "string"
+              },
+              "country": {
+                "format": "email",
+                "type": "string"
+              },
+              "affiliateCode": {
+                "type": "string"
+              },
+              "statusCode": {
+                "type": "number"
+              }
+            },
+            "type": "object",
+            "required": [
+              "name",
+              "email",
+              "country",
+              "affiliateCode",
+              "statusCode"
+            ]
+          },
+          "DeviceTokenInput": {
+            "properties": {
+              "deviceToken": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "GeneralResponse": {
+            "properties": {
+              "message": {
+                "type": "string"
+              },
+              "statusCode": {
+                "type": "number"
+              }
+            },
+            "type": "object",
+            "required": [
+              "message",
+              "statusCode"
+            ]
+          },
+          "DeleteAccountInput": {
+            "properties": {
+              "password": {
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "required": [
+              "password"
+            ]
+          },
+          "RegisterUserInput": {
+            "properties": {
+              "name": {
+                "minLength": 2,
+                "maxLength": 100,
+                "type": "string"
+              },
+              "email": {
+                "type": "string",
+                "format": "email"
+              },
+              "country": {
+                "type": "string"
+              },
+              "type": {
+                "enum": [
+                  "INDIVIDUAL",
+                  "BUSINESS"
+                ],
+                "type": "string"
+              },
+              "password": {
+                "pattern": "((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$",
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 20
+              },
+              "confirmPassword": {
+                "minLength": 6,
+                "maxLength": 20,
+                "type": "string"
+              },
+              "affiliateCode": {
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 6,
+                "pattern": "^[a-zA-Z]+$"
+              },
+              "captcha": {
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "required": [
+              "name",
+              "email",
+              "country",
+              "type",
+              "password",
+              "confirmPassword",
+              "captcha"
+            ]
+          },
+          "SubTokenResponse": {
+            "properties": {
+              "accessToken": {
+                "type": "string"
+              },
+              "statusCode": {
+                "type": "number"
+              }
+            },
+            "type": "object",
+            "required": [
+              "accessToken",
+              "statusCode"
+            ]
+          },
+          "VerificationRequestInput": {
+            "properties": {
+              "destination": {
+                "enum": [
+                  "EMAIL",
+                  "PHONE"
+                ],
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "VerifyCodeInput": {
+            "properties": {
+              "code": {
+                "minLength": 6,
+                "maxLength": 6,
+                "type": "string",
+                "pattern": "^[-+]?[0-9]+$"
+              }
+            },
+            "type": "object",
+            "required": [
+              "code"
+            ]
+          },
+          "TokenResponse": {
+            "properties": {
+              "accessToken": {
+                "type": "string"
+              },
+              "refreshToken": {
+                "type": "string"
+              },
+              "statusCode": {
+                "type": "number"
+              }
+            },
+            "type": "object",
+            "required": [
+              "accessToken",
+              "refreshToken",
+              "statusCode"
+            ]
+          },
+          "LoginInput": {
+            "properties": {
+              "email": {
+                "format": "email",
+                "type": "string"
+              },
+              "password": {
+                "maxLength": 20,
+                "type": "string",
+                "minLength": 6
+              },
+              "captcha": {
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "required": [
+              "email",
+              "password",
+              "captcha"
+            ]
+          },
+          "CheckTwoFaCodeInput": {
+            "properties": {
+              "code": {
+                "minLength": 6,
+                "maxLength": 6,
+                "type": "string",
+                "pattern": "^[-+]?[0-9]+$"
+              }
+            },
+            "type": "object",
+            "required": [
+              "code"
+            ]
+          },
+          "ChangePasswordInput": {
+            "properties": {
+              "oldPassword": {
+                "minLength": 6,
+                "maxLength": 20,
+                "type": "string"
+              },
+              "password": {
+                "type": "string",
+                "pattern": "((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$",
+                "minLength": 6,
+                "maxLength": 20
+              },
+              "confirmPassword": {
+                "minLength": 6,
+                "maxLength": 20,
+                "type": "string"
+              },
+              "captcha": {
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "required": [
+              "oldPassword",
+              "password",
+              "confirmPassword",
+              "captcha"
+            ]
+          },
+          "ResetPasswordAuthInput": {
+            "properties": {
+              "password": {
+                "type": "string",
+                "pattern": "((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$",
+                "minLength": 6,
+                "maxLength": 20
+              },
+              "confirmPassword": {
+                "minLength": 6,
+                "maxLength": 20,
+                "type": "string"
+              },
+              "captcha": {
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "required": [
+              "password",
+              "confirmPassword",
+              "captcha"
+            ]
+          },
+          "ResetPasswordRequestInput": {
+            "properties": {
+              "email": {
+                "format": "email",
+                "type": "string"
+              },
+              "destination": {
+                "enum": [
+                  "EMAIL",
+                  "PHONE"
+                ],
+                "type": "string"
+              },
+              "captcha": {
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "required": [
+              "email",
+              "captcha"
+            ]
+          },
+          "ResetPasswordInput": {
+            "properties": {
+              "email": {
+                "format": "email",
+                "type": "string"
+              },
+              "code": {
+                "minLength": 6,
+                "maxLength": 6,
+                "type": "string",
+                "pattern": "^[-+]?[0-9]+$"
+              },
+              "password": {
+                "type": "string",
+                "pattern": "((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$",
+                "minLength": 6,
+                "maxLength": 20
+              },
+              "confirmPassword": {
+                "minLength": 6,
+                "maxLength": 20,
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "required": [
+              "email",
+              "code",
+              "password",
+              "confirmPassword"
+            ]
+          },
+          "TwoFaStatusResponse": {
+            "properties": {
+              "twoFaStatus": {
+                "type": "boolean"
+              },
+              "statusCode": {
+                "type": "number"
+              }
+            },
+            "type": "object",
+            "required": [
+              "twoFaStatus",
+              "statusCode"
+            ]
+          },
+          "GenerateTwoFaResponse": {
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "secret": {
+                "type": "string"
+              },
+              "status": {
+                "type": "boolean"
+              },
+              "statusCode": {
+                "type": "number"
+              }
+            },
+            "type": "object",
+            "required": [
+              "status",
+              "statusCode"
+            ]
+          },
+          "CouponCodeInput": {
+            "properties": {
+              "code": {
+                "minLength": 4,
+                "maxLength": 20,
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z]+$"
+              },
+              "usageType": {
+                "enum": [
+                  "ONE_TIME",
+                  "ONE_TIME_ALL_USERS",
+                  "MULTIPLE_TIMES",
+                  "STAFF_CODE",
+                  "STAFF_CODE_ALL_USERS"
+                ],
+                "type": "string"
+              },
+              "email": {
+                "type": "string",
+                "format": "email"
+              },
+              "discount": {
+                "maximum": 99,
+                "type": "number",
+                "minimum": 0.001
+              },
+              "usageLimit": {
+                "minimum": 1,
+                "type": "integer"
+              },
+              "expireInDays": {
+                "minimum": 1,
+                "type": "integer"
+              },
+              "startDate": {
+                "oneOf": [
+                  {
+                    "format": "date",
+                    "type": "string"
+                  },
+                  {
+                    "format": "date-time",
+                    "type": "string"
+                  }
+                ],
+                "$ref": "#/definitions/Date"
+              },
+              "userId": {
+                "format": "uuid",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "required": [
+              "code",
+              "discount",
+              "expireInDays",
+              "startDate"
+            ]
+          },
+          "CheckCouponCodeInput": {
+            "properties": {
+              "code": {
+                "minLength": 4,
+                "maxLength": 20,
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z]+$"
+              }
+            },
+            "type": "object",
+            "required": [
+              "code"
+            ]
+          },
+          "CheckCouponCodeResponse": {
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "discount": {
+                "type": "number"
+              },
+              "statusCode": {
+                "type": "number"
+              }
+            },
+            "type": "object",
+            "required": [
+              "code",
+              "discount",
+              "statusCode"
+            ]
+          },
+          "PurgeCouponCodeInput": {
+            "properties": {
+              "code": {
+                "minLength": 4,
+                "maxLength": 20,
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z]+$"
+              }
+            },
+            "type": "object",
+            "required": [
+              "code"
+            ]
+          },
+          "ContactInput": {
+            "properties": {
+              "firstName": {
+                "minLength": 2,
+                "maxLength": 25,
+                "type": "string",
+                "pattern": "^[a-zA-Z]+$"
+              },
+              "lastName": {
+                "minLength": 2,
+                "maxLength": 25,
+                "type": "string",
+                "pattern": "^[a-zA-Z]+$"
+              },
+              "email": {
+                "format": "email",
+                "type": "string"
+              },
+              "phone": {
+                "type": "string",
+                "format": "mobile-phone"
+              },
+              "message": {
+                "minLength": 5,
+                "maxLength": 200,
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "required": [
+              "firstName",
+              "lastName",
+              "email",
+              "phone",
+              "message"
+            ]
+          },
+          "NewMerchantInput": {
+            "properties": {
+              "label": {
+                "minLength": 2,
+                "maxLength": 20,
+                "type": "string",
+                "pattern": "^(\\w+\\s?)*\\s*$"
+              },
+              "currencies": {
+                "items": {
+                  "enum": [
+                    "USD",
+                    "JMD"
+                  ],
+                  "type": "string"
+                },
+                "minItems": 1,
+                "type": "array",
+                "uniqueItems": true
+              },
+              "userId": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "mid": {
+                "type": "string"
+              },
+              "tid": {
+                "type": "string"
+              },
+              "mcc": {
+                "pattern": "^\\d{4}$",
+                "type": "string"
+              },
+              "bankId": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "type": "object",
+            "required": [
+              "label",
+              "currencies",
+              "userId",
+              "mid",
+              "tid",
+              "mcc",
+              "bankId"
+            ]
+          },
+          "NewBranchInput": {
+            "properties": {
+              "name": {
+                "minLength": 2,
+                "maxLength": 30,
+                "type": "string",
+                "pattern": "^[0-9A-Za-z_-]+$"
+              },
+              "label": {
+                "minLength": 2,
+                "maxLength": 10,
+                "type": "string",
+                "pattern": "^[0-9A-Za-z_-]+$"
+              },
+              "location": {
+                "minLength": 2,
+                "maxLength": 100,
+                "type": "string",
+                "pattern": "^[0-9A-Za-z_-]+$"
+              }
+            },
+            "type": "object",
+            "required": [
+              "name",
+              "label",
+              "location"
+            ]
+          },
+          "UpdateMerchantInput": {
+            "properties": {
+              "label": {
+                "minLength": 2,
+                "maxLength": 20,
+                "type": "string",
+                "pattern": "^[0-9A-Za-z_-]+$"
+              },
+              "powerTranzId": {
+                "minLength": 8,
+                "maxLength": 8,
+                "type": "string",
+                "pattern": "^[-+]?[0-9]+$"
+              },
+              "powerTranzPassword": {
+                "minLength": 54,
+                "maxLength": 54,
+                "type": "string",
+                "pattern": "^[0-9A-Za-z]+$"
+              },
+              "currencies": {
+                "items": {
+                  "enum": [
+                    "USD",
+                    "JMD"
+                  ],
+                  "type": "string"
+                },
+                "minItems": 1,
+                "type": "array",
+                "uniqueItems": true
+              },
+              "userId": {
+                "format": "uuid",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "required": [
+              "userId"
+            ]
+          },
+          "ActivateMerchantAdminInput": {
+            "properties": {
+              "powerTranzId": {
+                "minLength": 8,
+                "maxLength": 8,
+                "type": "string",
+                "pattern": "^[-+]?[0-9]+$"
+              },
+              "powerTranzPassword": {
+                "minLength": 20,
+                "maxLength": 80,
+                "type": "string",
+                "pattern": "^[0-9A-Za-z]+$"
+              },
+              "merchantId": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "type": "object",
+            "required": [
+              "powerTranzId",
+              "powerTranzPassword",
+              "merchantId"
+            ]
+          },
+          "RejectMerchantAdminInput": {
+            "properties": {
+              "merchantId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "nexStatus": {
+                "enum": [
+                  "CARD_AUTH_ERROR",
+                  "PAYMENT_ERROR",
+                  "PAN_TOKEN_EXPIRED",
+                  "PAN_TOKEN_UPDATE_FAILED",
+                  "NEXT_API_ERROR",
+                  "PAN_TOKEN_MISSING",
+                  "COMPANY_ID_MISSING",
+                  "AWAITING_CREDENTIALS",
+                  "KYC_ERROR",
+                  "OTHER_ERROR"
+                ],
+                "type": "string"
+              },
+              "reason": {
+                "minLength": 2,
+                "maxLength": 100,
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "required": [
+              "merchantId",
+              "nexStatus",
+              "reason"
+            ]
+          },
+          "UpdateMerchantAdminInput": {
+            "properties": {
+              "merchantId": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "type": "object",
+            "required": [
+              "merchantId"
+            ]
+          },
+          "MerchantActivationInput": {
+            "properties": {
+              "currency": {
+                "enum": [
+                  "USD",
+                  "JMD"
+                ],
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "required": [
+              "currency"
+            ]
+          },
+          "RefundTransactionInput": {
+            "properties": {
+              "refundNote": {
+                "minLength": 2,
+                "maxLength": 100,
+                "type": "string",
+                "pattern": "^(\\w+\\s?)*\\s*$"
+              },
+              "refundReason": {
+                "minLength": 2,
+                "maxLength": 100,
+                "type": "string",
+                "pattern": "^(\\w+\\s?)*\\s*$"
+              }
+            },
+            "type": "object",
+            "required": [
+              "refundReason"
+            ]
+          },
+          "PaymentRequestInput": {
+            "properties": {
+              "branchId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "email": {
+                "format": "email",
+                "type": "string"
+              },
+              "phone": {
+                "type": "string",
+                "format": "mobile-phone"
+              },
+              "tipStatus": {
+                "type": "boolean"
+              },
+              "amount": {
+                "maximum": 9999999999999.99,
+                "type": "number",
+                "minimum": 0
+              },
+              "currency": {
+                "enum": [
+                  "USD",
+                  "JMD"
+                ],
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "required": [
+              "currency"
+            ]
+          },
+          "PaymentRequestNotificationInput": {
+            "properties": {
+              "transactionId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "destination": {
+                "enum": [
+                  "email",
+                  "phone"
+                ],
+                "type": "string"
+              },
+              "email": {
+                "format": "email",
+                "type": "string"
+              },
+              "phone": {
+                "type": "string",
+                "format": "mobile-phone"
+              }
+            },
+            "type": "object",
+            "required": [
+              "transactionId",
+              "destination"
+            ]
+          },
+          "PayInput": {
+            "properties": {
+              "couponCode": {
+                "minLength": 4,
+                "maxLength": 20,
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z]+$"
+              },
+              "transactionId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "amount": {
+                "maximum": 9999999999999.99,
+                "type": "number",
+                "minimum": 0
+              },
+              "tipAmount": {
+                "maximum": 9999999999999.99,
+                "type": "number",
+                "minimum": 0
+              },
+              "email": {
+                "format": "email",
+                "type": "string"
+              },
+              "notes": {
+                "minLength": 2,
+                "maxLength": 50,
+                "type": "string",
+                "pattern": "^(\\w+\\s?)*\\s*$"
+              },
+              "cardHolderName": {
+                "minLength": 2,
+                "maxLength": 50,
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "required": [
+              "transactionId",
+              "tipAmount",
+              "email",
+              "cardHolderName"
+            ]
+          },
+          "PayMerchantInput": {
+            "properties": {
+              "couponCode": {
+                "minLength": 4,
+                "maxLength": 20,
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z]+$"
+              },
+              "branchId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "amount": {
+                "maximum": 9999999999999.99,
+                "type": "number",
+                "minimum": 0.01
+              },
+              "tipAmount": {
+                "maximum": 9999999999999.99,
+                "type": "number",
+                "minimum": 0
+              },
+              "email": {
+                "format": "email",
+                "type": "string"
+              },
+              "currency": {
+                "enum": [
+                  "USD",
+                  "JMD"
+                ],
+                "type": "string"
+              },
+              "notes": {
+                "minLength": 2,
+                "maxLength": 50,
+                "type": "string",
+                "pattern": "^(\\w+\\s?)*\\s*$"
+              },
+              "cardHolderName": {
+                "minLength": 2,
+                "maxLength": 50,
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "required": [
+              "amount",
+              "tipAmount",
+              "email",
+              "currency",
+              "cardHolderName"
+            ]
+          },
+          "OmitTypeClass": {
+            "properties": {
+              "statusCode": {
+                "type": "number"
+              }
+            },
+            "type": "object",
+            "required": [
+              "statusCode"
+            ]
+          },
+          "PaginationInput": {
+            "properties": {
+              "pageNumber": {
+                "minimum": 1,
+                "type": "integer"
+              },
+              "perPage": {
+                "maximum": 50,
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "type": "object",
+            "required": [
+              "pageNumber",
+              "perPage"
+            ]
+          },
+          "UserInvitationInput": {
+            "properties": {
+              "emails": {
+                "items": {
+                  "format": "email",
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "type": "object",
+            "required": [
+              "emails"
+            ]
+          },
+          "MerchantIdInput": {
+            "properties": {
+              "merchantId": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "type": "object",
+            "required": [
+              "merchantId"
+            ]
+          },
+          "MerchantIdQueryInput": {
+            "properties": {
+              "merchantId": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "type": "object"
+          },
+          "BranchIdInput": {
+            "properties": {
+              "branchId": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "type": "object",
+            "required": [
+              "branchId"
+            ]
+          },
+          "FacTransactionRedirectInput": {
+            "properties": {
+              "transactionId": {
+                "format": "uuid",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "required": [
+              "transactionId"
+            ]
+          },
+          "FetchTransactionInput": {
+            "properties": {
+              "transactionId": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "type": "object",
+            "required": [
+              "transactionId"
+            ]
+          },
+          "TransactionFilterInput": {
+            "properties": {
+              "email": {
+                "format": "email",
+                "type": "string"
+              },
+              "merchantName": {
+                "minLength": 2,
+                "maxLength": 10,
+                "type": "string"
+              },
+              "branchName": {
+                "minLength": 2,
+                "maxLength": 10,
+                "type": "string"
+              },
+              "phone": {
+                "type": "string",
+                "format": "mobile-phone"
+              },
+              "refund": {
+                "enum": [
+                  "true",
+                  "false"
+                ],
+                "type": "string"
+              },
+              "currency": {
+                "enum": [
+                  "USD",
+                  "JMD"
+                ],
+                "type": "string"
+              },
+              "statuses": {
+                "items": {
+                  "enum": [
+                    "CREATED",
+                    "PENDING",
+                    "IN_PROGRESS",
+                    "PROCESSING",
+                    "PROCESSED",
+                    "COMPLETED",
+                    "FAILED",
+                    "EXPIRED",
+                    "CANCELLED"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "duration": {
+                "enum": [
+                  "TODAY",
+                  "CURRENT_WEEK",
+                  "LAST_WEEK",
+                  "CURRENT_MONTH",
+                  "LAST_MONTH",
+                  "LAST_3_MONTHS"
+                ],
+                "type": "string"
+              },
+              "transactionId": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "merchantId": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "branchId": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "fromDate": {
+                "oneOf": [
+                  {
+                    "format": "date",
+                    "type": "string"
+                  },
+                  {
+                    "format": "date-time",
+                    "type": "string"
+                  }
+                ]
+              },
+              "toDate": {
+                "$ref": "#/definitions/Date",
+                "oneOf": [
+                  {
+                    "format": "date",
+                    "type": "string"
+                  },
+                  {
+                    "format": "date-time",
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
+  }
