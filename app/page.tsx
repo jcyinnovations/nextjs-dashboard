@@ -120,8 +120,6 @@ function urlBase64ToUint8Array(base64String: string) {
    
     return (
       <div>
-        <PushNotificationManager />
-        <InstallPrompt />
         <h3>Install App</h3>
         <button>Add to Home Screen</button>
         {isIOS && (
@@ -187,6 +185,8 @@ export default function Page() {
           />
         </div>
       </div>
+      <PushNotificationManager />
+      <InstallPrompt />
     </main>
   );
 }
