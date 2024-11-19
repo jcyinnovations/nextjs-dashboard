@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'Bold PWA',
     short_name: 'BoldPWA',
     description: 'A Progressive Web App built with Next.js',
-    start_url: '/',
+    start_url: '/dashboard',
     display: 'standalone',
     background_color: '#ffffff',
     theme_color: '#4c7c9b',
