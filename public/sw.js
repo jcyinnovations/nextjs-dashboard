@@ -3,8 +3,8 @@ self.addEventListener('push', function (event) {
       const data = event.data.json()
       const options = {
         body: data.body,
-        icon: data.icon || '/icon.png',
-        badge: '/badge.png',
+        icon: data.icon || '/favicon-96x96.png',
+        badge: '/favicon-96x96.png',
         vibrate: [100, 50, 100],
         data: {
           dateOfArrival: Date.now(),
@@ -16,7 +16,7 @@ self.addEventListener('push', function (event) {
   })
    
   self.addEventListener('notificationclick', function (event) {
-    console.log('Notification click received.')
+    console.log(`Notification click received.${event.data}`)
     event.notification.close()
-    event.waitUntil(clients.openWindow('http://localhost:3000'))
+    event.waitUntil(clients.openWindow('https://dashboard-eight-phi-57.vercel.app/'))
   })
